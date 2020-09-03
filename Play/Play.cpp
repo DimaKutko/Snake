@@ -12,5 +12,12 @@ Play::Play(int height, int width) : window(VideoMode(height, width), "Snake") {
     graphics[0] = new Walls(window);
     
     graphics[1] = new Snake();
+}
+
+Play::~Play(){
+    std::cout << "~Play\n";
+    for(Figure* f : graphics) delete f;
     
 }
+
+

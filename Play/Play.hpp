@@ -4,6 +4,7 @@
 #include "Figure.hpp"
 #include "Snake.hpp"
 #include "Walls.hpp"
+#include <iostream>
 #include <vector>
 
 using namespace sf;
