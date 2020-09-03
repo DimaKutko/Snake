@@ -46,9 +46,7 @@ void action(sf::RenderWindow& window, sf::Event& event){
 int main()
 {
     
-    sf::RenderWindow window(sf::VideoMode(1002, 1002), "Snake");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    sf::RenderWindow window(sf::VideoMode(1000, 1000), "Snake");
     
     sf::Clock clock;
     float time;
@@ -72,5 +70,5 @@ int main()
         
         window.display();
     }
-    return EXIT_SUCCESS;
+    return 0;
 }
