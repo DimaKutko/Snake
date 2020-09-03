@@ -28,6 +28,15 @@ Walls::Walls(RenderWindow& window) : Figure(window.getSize().x-2){
     }
 }
 
+Walls::~Walls(){
+    std::cout << "~Walls\n";
+    
+    for(Point* p : left) delete p;
+    for(Point* p : right) delete p;
+    for(Point* p : down) delete p;
+    
+}
+
 void Walls::draw(RenderWindow& window){
     for(Point* p : figure) p->draw(window);
     for(Point* p : left) p->draw(window);

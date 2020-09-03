@@ -1,5 +1,6 @@
 #pragma once
 #include "Point.hpp"
+#include <iostream>
 #include <vector>
 
 using namespace std;

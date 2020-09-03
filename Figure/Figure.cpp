@@ -5,9 +5,9 @@ Figure::Figure(int size){
 }
 
 Figure::~Figure(){
-    for(Point* p : figure){
-        delete p;
-    }
+    std::cout << "~Figure\n";
+    
+    for(Point* p : figure)delete p;
 }
 
 
