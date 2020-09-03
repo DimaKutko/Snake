@@ -9,9 +9,8 @@ Play::Play(int height, int width) : window(VideoMode(height, width), "Snake") {
     
     graphics.reserve(counterFigure);
     
-    graphics[0] = new Walls(window);
-    
-    graphics[1] = new Snake();
+    graphics.push_back(new Walls(window));
+    graphics.push_back(new Snake());
 }
 
 Play::~Play(){
@@ -20,4 +19,54 @@ Play::~Play(){
     
 }
 
+void Play::run(){
+    std::cout << graphics.size();
+    while(window.isOpen())
+    {
+        Event event;
+        
+        action(window, event);
+        window.clear();
+        time = clock.getElapsedTime().asMilliseconds();
+        clock.restart();
+        
+        for(Figure* f : graphics) f->draw(window);
+        
+        window.display();
+    }
+}
 
+void Play::action(RenderWindow& window, Event& event){
+    while(window.pollEvent(event))
+    {
+        if(event.type == Event::Closed)window.close();
+        
+        if(event.type == Event::KeyPressed){
+            switch (event.key.code) {
+                case Keyboard::Escape:
+                    window.close();
+                    break;
+                case Keyboard::Up:
+                    std::cout << "UP" << std::endl;
+                    
+                    break;
+                case Keyboard::Down:
+                    std::cout << "Down" << std::endl;
+                    
+                    break;
+                case Keyboard::Left:
+                    std::cout << "Left" << std::endl;
+                    
+                    break;
+                case Keyboard::Right:
+                    std::cout << "Right" << std::endl;
+                    
+                    break;
+                default:
+                    std::cout << "NULL" << std::endl;
+                    break;
+            }
+        }
+        
+    }
+}

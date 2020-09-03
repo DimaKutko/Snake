@@ -8,7 +8,7 @@ using namespace std;
 class Figure{
 public:
     Figure(int size);
-    ~Figure();
+    virtual ~Figure();
     virtual void draw(RenderWindow& window) = 0;
     
 protected:

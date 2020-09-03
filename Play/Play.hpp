@@ -14,7 +14,7 @@ public:
     Play(int height = 1000, int width = 1000);
     ~Play();
     
-    void Run();
+    void run();
     
 private:
     RenderWindow window;
