@@ -14,6 +14,8 @@ Snake::Snake( RenderWindow& window, int size): Figure(size){
         x += 10;
     }
     
+    speed = 5;
+    
     direction = LEFT;
 }
 
@@ -28,8 +30,7 @@ void Snake::step(RenderWindow& window){
     if(timeCounter != 0){
         timeCounter--;
     }else{
-        
-        timeCounter = 5;
+        timeCounter = speed;
         
         shift();
         
@@ -125,4 +126,8 @@ void Snake::shift(){
     }
     
     figure[0] = temp;
+}
+
+void Snake::setSpeed(int speed){
+    this -> speed = speed;
 }

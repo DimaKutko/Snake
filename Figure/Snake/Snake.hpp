@@ -16,12 +16,14 @@ public:
     Direction getDirection();
     int getHeadX();
     int getHeadY();
+    void setSpeed(int speed);
     
 private:
     int headX;
     int headY;
     Direction direction;
     int timeCounter = 5;
+    int speed ;
     
     void stepLeft();
     void stepRight();
