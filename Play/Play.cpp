@@ -5,7 +5,7 @@ Play::Play(int height, int width) : window(VideoMode(height, width), "Snake") {
     
     window.setVerticalSyncEnabled(true);
     
-    snake = new Snake(window, 40);
+    snake = new Snake(window);
     
     graphics.reserve(counterFigure);
     
