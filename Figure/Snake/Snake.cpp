@@ -1,7 +1,7 @@
 #include "Snake.hpp"
 #include <iostream>
 
-Snake::Snake( RenderWindow& window, int size): Figure(size){
+Snake::Snake(RenderWindow& window, int size): Figure(size){
     
     int x = window.getSize().x / 2;
     int y = window.getSize().y / 2;

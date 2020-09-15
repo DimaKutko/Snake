@@ -1,17 +1,22 @@
 #include "Play.hpp"
 
 Play::Play(int height, int width) : window(VideoMode(height, width), "Snake") {
-    const int counterFigure = 2;
+    const int counterFigure = 3;
     
     window.setVerticalSyncEnabled(true);
     
     snake = new Snake(window);
+    
+    apple = new Apple(window);
     
     graphics.reserve(counterFigure);
     
     graphics.push_back(new Walls(window));
     
     graphics.push_back(snake);
+    
+    graphics.push_back(apple);
+    
 }
 
 Play::~Play(){
@@ -33,7 +38,7 @@ void Play::run(){
         if(snake -> isStop()){
             snake -> dead();
         }else{
-            snake->step(window);
+            snake -> step(window);
         }
         
         for(Figure* f : graphics) f->draw(window);
