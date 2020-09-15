@@ -8,14 +8,15 @@ class Point{
 public:
     Point(int x = 0, int y = 0);
     void draw(RenderWindow& window);
-    void setX(int x);
-    void setY(int y);
-    void setXY(int x, int y);
-    int getX();
-    int getY();
     void setColor(int r = 0, int g = 0, int b = 0);
     void setSize(int size = 20);
     int getSize();
+    
+    void setX(int x);
+    void setY(int y);
+    int getX();
+    int getY();
+    void operator=(const Point& other);
     
 private:
     RectangleShape point;
