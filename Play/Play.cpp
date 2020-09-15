@@ -57,7 +57,6 @@ void Play::action(RenderWindow& window, Event& event){
                 case Keyboard::S:
                     std::cout << "Down" << std::endl;
                     _snake -> setDirection(DOWN);
-                    
                     break;
                 case Keyboard::Left:
                 case Keyboard::A:

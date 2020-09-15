@@ -26,7 +26,7 @@ void Snake::step(){
         timeCounter--;
     }else{
         
-        timeCounter = 10;
+        timeCounter = 3;
         
         shift();
         
@@ -53,6 +53,21 @@ void Snake::step(){
 }
 
 void Snake::setDirection(Direction direction){
+    switch (direction) {
+        case UP:
+            if(this -> direction == DOWN) return;
+            break;
+         case DOWN:
+            if(this -> direction == UP) return;
+            break;
+        case LEFT:
+            if(this -> direction ==  RIGHT) return;
+            break;
+        case RIGHT:
+            if(this -> direction == LEFT) return;
+            break;
+    }
+    
     this -> direction = direction;
 }
 
@@ -70,7 +85,6 @@ void Snake::stepRight(){
     shift();
     
     headX += 10;
-    
     
     figure[0] -> setY(headY);
     
@@ -109,4 +123,3 @@ void Snake::shift(){
     
     figure[0] = temp;
 }
-

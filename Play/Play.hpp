@@ -11,7 +11,7 @@ using namespace sf;
 
 class Play{
 public:
-    Play(int height = 1000, int width = 1000);
+    Play(int height = 500, int width = 500);
     ~Play();
     
     void run();

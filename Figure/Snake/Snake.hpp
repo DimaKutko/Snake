@@ -6,7 +6,7 @@ enum Direction {UP, DOWN, LEFT, RIGHT};
 
 class Snake : public Figure{
 public:
-    Snake(int size = 3, int x = 500, int y = 500) ;
+    Snake(int size = 3, int x = 250, int y = 250) ;
     
     void draw(RenderWindow& window) override;
     vector<Point*>* getSnake();
