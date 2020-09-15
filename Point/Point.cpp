@@ -51,3 +51,9 @@ void Point::operator=(const Point &other){
     point.setPosition(x, y);
 }
 
+void Point::setXY(int x, int y){
+    this -> x = x;
+    this -> y = y;
+    
+    point.setPosition(x, y);
+}

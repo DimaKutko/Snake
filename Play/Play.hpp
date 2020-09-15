@@ -1,11 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <time.h>
 #include "Figure.hpp"
 #include "Snake.hpp"
 #include "Walls.hpp"
 #include <iostream>
 #include <vector>
+#include "Apple.hpp"
 
 using namespace sf;
 
@@ -20,6 +20,7 @@ private:
     RenderWindow window;
     vector<Figure*> graphics;
     Snake* snake;
+    Apple* apple;
     
     void action(RenderWindow& window, Event& event);
 };
