@@ -21,6 +21,7 @@ private:
     Clock clock;
     float time;
     vector<Figure*> graphics;
+    Snake* _snake;
     
     void action(RenderWindow& window, Event& event);
 };

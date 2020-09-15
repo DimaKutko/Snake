@@ -10,7 +10,10 @@ Play::Play(int height, int width) : window(VideoMode(height, width), "Snake") {
     graphics.reserve(counterFigure);
     
     graphics.push_back(new Walls(window));
-    graphics.push_back(new Snake());
+    
+    _snake = new Snake();
+    
+    graphics.push_back(_snake);
 }
 
 Play::~Play(){
@@ -20,15 +23,14 @@ Play::~Play(){
 }
 
 void Play::run(){
-    std::cout << graphics.size();
     while(window.isOpen())
     {
         Event event;
         
         action(window, event);
         window.clear();
-        time = clock.getElapsedTime().asMilliseconds();
-        clock.restart();
+        
+        _snake->step();
         
         for(Figure* f : graphics) f->draw(window);
         
@@ -47,19 +49,26 @@ void Play::action(RenderWindow& window, Event& event){
                     window.close();
                     break;
                 case Keyboard::Up:
+                case Keyboard::W:
                     std::cout << "UP" << std::endl;
-                    
+                    _snake -> setDirection(UP);
                     break;
                 case Keyboard::Down:
+                case Keyboard::S:
                     std::cout << "Down" << std::endl;
+                    _snake -> setDirection(DOWN);
                     
                     break;
                 case Keyboard::Left:
+                case Keyboard::A:
                     std::cout << "Left" << std::endl;
+                    _snake -> setDirection(LEFT);
                     
                     break;
                 case Keyboard::Right:
+                case Keyboard::D:
                     std::cout << "Right" << std::endl;
+                    _snake -> setDirection(RIGHT);
                     
                     break;
                 default:

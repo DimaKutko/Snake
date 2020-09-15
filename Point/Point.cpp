@@ -1,11 +1,10 @@
 #include "Point.hpp"
 
 Point::Point(int x, int y){
-    x = x;
-    y = y;
+    this -> x = x;
+    this -> y = y;
     
     point.setSize(Vector2f(size,size));
-    
     
     point.setOrigin(size/2, size/2);
     point.setPosition(x, y);
@@ -19,30 +18,36 @@ void Point::draw(RenderWindow& window){
     window.draw(point);
 }
 
-void Point::setX(int x) {
-    this->x = x;
+void Point::setSize(int size){
+    point.setSize(Vector2f(size,size));
 }
 
-void Point::setY(int y) {
-    this->y = y;
+int Point::getSize(){
+    return size;
 }
 
-void Point::setXY(int x, int y) {
-    this->x = x;
-    this->y = y;
+void Point::setY(int y){
+    this -> y = y;
+    point.setPosition(x, this -> y);
 }
 
-int Point::getX(){
-    return x;
+void Point::setX(int x){
+    this -> x = x;
+    point.setPosition(this -> x, y);
 }
 
 int Point::getY(){
     return y;
 }
 
-void Point::setSize(int size){
-    point.setSize(Vector2f(size,size));
+int Point::getX(){
+    return x;
 }
-int Point::getSize(){
-    return size;
+
+void Point::operator=(const Point &other){
+    this -> x = other.x;
+    this -> y = other.y;
+    
+    point.setPosition(x, y);
 }
+
