@@ -2,6 +2,7 @@
 #include "Figure.hpp"
 #include "Point.hpp"
 #include <SFML/Graphics.hpp>
+#include "Apple.hpp"
 
 enum Direction {UP, DOWN, LEFT, RIGHT, STOP};
 
@@ -19,6 +20,7 @@ public:
     void deadlockCheck(RenderWindow& window);
     bool isStop();
     void dead();
+    bool eat(int x, int y);
     
 private:
     int headX;

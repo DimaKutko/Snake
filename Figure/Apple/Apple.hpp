@@ -7,7 +7,7 @@ public:
     Apple(RenderWindow& window);
     int getX();
     int getY();
-    void generate(Snake* snake);
+    void generate(RenderWindow& window);
     
     void draw(RenderWindow& window) override;
 };

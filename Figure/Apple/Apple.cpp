@@ -20,3 +20,10 @@ int Apple::getX(){
 void Apple::draw(RenderWindow& window){
     figure[0] -> draw(window);
 }
+
+void Apple::generate(RenderWindow& window){
+    int x = (rand() % (window.getSize().x / 20)) * 20;
+    int y = (rand() % (window.getSize().y / 20)) * 20;
+    
+    figure[0] -> setXY(x, y);
+}

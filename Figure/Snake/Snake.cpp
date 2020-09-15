@@ -65,7 +65,7 @@ void Snake::setDirection(Direction direction){
         case UP:
             if(this -> direction == DOWN) return;
             break;
-         case DOWN:
+        case DOWN:
             if(this -> direction == UP) return;
             break;
         case LEFT:
@@ -112,19 +112,31 @@ bool Snake::tailCheck(){
     
     if(direction == LEFT){
         for(Point* p : figure){
-            if(p -> getX() == headX - 20 && p -> getY() == headY) check = true;
+            if(p -> getX() == headX - 20 && p -> getY() == headY){
+                check = true;
+                break;
+            }
         }
     }else if(direction == RIGHT){
         for(Point* p : figure){
-            if(p -> getX() == headX + 20 && p -> getY() == headY) check = true;
+            if(p -> getX() == headX + 20 && p -> getY() == headY) {
+                check = true;
+                break;
+            }
         }
     }else if(direction == UP){
         for(Point* p : figure){
-            if(p -> getY() == headY - 20 && p -> getX() == headX) check = true;
+            if(p -> getY() == headY - 20 && p -> getX() == headX) {
+                check = true;
+                break;
+            }
         }
     }else if(direction == DOWN){
         for(Point* p : figure){
-            if(p -> getY() == headY + 20 && p -> getX() == headX) check = true;
+            if(p -> getY() == headY + 20 && p -> getX() == headX) {
+                check = true;
+                break;
+            }
         }
     }
     
@@ -139,4 +151,14 @@ void Snake::dead(){
     for(int i = 1; i < figure.size(); i++){
         figure[i] -> setColor(139,0,0);
     }
+}
+
+bool Snake::eat(int x, int y){
+    for(Point* s : figure){
+        if(s -> getX() == x && s -> getY() == y){
+            figure.push_back(new Point(figure[figure.size()-1]->getX(), figure[figure.size()-1]->getY()));
+            return true;
+        }
+    }
+    return false;
 }

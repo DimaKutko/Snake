@@ -38,6 +38,10 @@ void Play::run(){
         if(snake -> isStop()){
             snake -> dead();
         }else{
+            if(snake->eat(apple -> getX(), apple -> getY())){
+                apple -> generate(window);
+            }
+                
             snake -> step(window);
         }
         
