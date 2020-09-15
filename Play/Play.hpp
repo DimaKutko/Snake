@@ -19,7 +19,7 @@ public:
 private:
     RenderWindow window;
     vector<Figure*> graphics;
-    Snake* _snake;
+    Snake* snake;
     
     void action(RenderWindow& window, Event& event);
 };

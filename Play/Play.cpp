@@ -5,13 +5,13 @@ Play::Play(int height, int width) : window(VideoMode(height, width), "Snake") {
     
     window.setVerticalSyncEnabled(true);
     
-    _snake = new Snake(window);
+    snake = new Snake(window, 40);
     
     graphics.reserve(counterFigure);
     
     graphics.push_back(new Walls(window));
     
-    graphics.push_back(_snake);
+    graphics.push_back(snake);
 }
 
 Play::~Play(){
@@ -28,7 +28,9 @@ void Play::run(){
         action(window, event);
         window.clear();
         
-        _snake->step(window);
+        snake -> deadlockCheck(window);
+        
+        snake->step(window);
         
         for(Figure* f : graphics) f->draw(window);
         
@@ -49,24 +51,22 @@ void Play::action(RenderWindow& window, Event& event){
                 case Keyboard::Up:
                 case Keyboard::W:
                     std::cout << "UP" << std::endl;
-                    _snake -> setDirection(UP);
+                    snake -> setDirection(UP);
                     break;
                 case Keyboard::Down:
                 case Keyboard::S:
                     std::cout << "Down" << std::endl;
-                    _snake -> setDirection(DOWN);
+                    snake -> setDirection(DOWN);
                     break;
                 case Keyboard::Left:
                 case Keyboard::A:
                     std::cout << "Left" << std::endl;
-                    _snake -> setDirection(LEFT);
-                    
+                    snake -> setDirection(LEFT);
                     break;
                 case Keyboard::Right:
                 case Keyboard::D:
                     std::cout << "Right" << std::endl;
-                    _snake -> setDirection(RIGHT);
-                    
+                    snake -> setDirection(RIGHT);
                     break;
                 default:
                     std::cout << "NULL" << std::endl;

@@ -3,7 +3,7 @@
 #include "Point.hpp"
 #include <SFML/Graphics.hpp>
 
-enum Direction {UP, DOWN, LEFT, RIGHT};
+enum Direction {UP, DOWN, LEFT, RIGHT, STOP};
 
 class Snake : public Figure{
 public:
@@ -17,6 +17,7 @@ public:
     int getHeadX();
     int getHeadY();
     void setSpeed(int speed);
+    void deadlockCheck(RenderWindow& window);
     
 private:
     int headX;
