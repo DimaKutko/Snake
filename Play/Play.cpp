@@ -3,15 +3,13 @@
 Play::Play(int height, int width) : window(VideoMode(height, width), "Snake") {
     const int counterFigure = 2;
     
-    time = 0;
-    
     window.setVerticalSyncEnabled(true);
+    
+    _snake = new Snake(window);
     
     graphics.reserve(counterFigure);
     
     graphics.push_back(new Walls(window));
-    
-    _snake = new Snake();
     
     graphics.push_back(_snake);
 }
@@ -30,7 +28,7 @@ void Play::run(){
         action(window, event);
         window.clear();
         
-        _snake->step();
+        _snake->step(window);
         
         for(Figure* f : graphics) f->draw(window);
         

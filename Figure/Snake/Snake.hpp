@@ -1,24 +1,27 @@
 #pragma once
 #include "Figure.hpp"
 #include "Point.hpp"
+#include <SFML/Graphics.hpp>
 
 enum Direction {UP, DOWN, LEFT, RIGHT};
 
 class Snake : public Figure{
 public:
-    Snake(int size = 3, int x = 250, int y = 250) ;
+    Snake(RenderWindow& window, int size = 3);
     
     void draw(RenderWindow& window) override;
     vector<Point*>* getSnake();
-    void step();
+    void step(RenderWindow& window);
     void setDirection(Direction direction);
     Direction getDirection();
+    int getHeadX();
+    int getHeadY();
     
 private:
     int headX;
     int headY;
     Direction direction;
-    int timeCounter = 3;
+    int timeCounter = 5;
     
     void stepLeft();
     void stepRight();

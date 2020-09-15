@@ -1,7 +1,10 @@
 #include "Snake.hpp"
 #include <iostream>
 
-Snake::Snake(int size, int x, int y): Figure(size){
+Snake::Snake( RenderWindow& window, int size): Figure(size){
+    
+    int x = window.getSize().x / 2;
+    int y = window.getSize().y / 2;
     
     headX = x;
     headY = y;
@@ -20,13 +23,13 @@ void Snake::draw(RenderWindow& window){
     }
 }
 
-void Snake::step(){
+void Snake::step(RenderWindow& window){
     
     if(timeCounter != 0){
         timeCounter--;
     }else{
         
-        timeCounter = 3;
+        timeCounter = 5;
         
         shift();
         

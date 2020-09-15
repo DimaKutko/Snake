@@ -18,8 +18,6 @@ public:
     
 private:
     RenderWindow window;
-    Clock clock;
-    float time;
     vector<Figure*> graphics;
     Snake* _snake;
     
