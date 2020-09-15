@@ -40,16 +40,16 @@ void Snake::step(RenderWindow& window){
         
         switch (direction) {
             case UP:
-                headY -= 10;
+                headY -= 20;
                 break;
             case DOWN:
-                headY += 10;
+                headY += 20;
                 break;
             case LEFT:
-                headX -= 10;
+                headX -= 20;
                 break;
             case RIGHT:
-                headX += 10;
+                headX += 20;
                 break;
             default:
                 return;
