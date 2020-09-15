@@ -30,7 +30,11 @@ void Play::run(){
         
         snake -> deadlockCheck(window);
         
-        snake->step(window);
+        if(snake -> isStop()){
+            snake -> dead();
+        }else{
+            snake->step(window);
+        }
         
         for(Figure* f : graphics) f->draw(window);
         
@@ -50,21 +54,25 @@ void Play::action(RenderWindow& window, Event& event){
                     break;
                 case Keyboard::Up:
                 case Keyboard::W:
+                    if(snake -> isStop())return;
                     std::cout << "UP" << std::endl;
                     snake -> setDirection(UP);
                     break;
                 case Keyboard::Down:
                 case Keyboard::S:
+                    if(snake -> isStop())return;
                     std::cout << "Down" << std::endl;
                     snake -> setDirection(DOWN);
                     break;
                 case Keyboard::Left:
                 case Keyboard::A:
+                    if(snake -> isStop())return;
                     std::cout << "Left" << std::endl;
                     snake -> setDirection(LEFT);
                     break;
                 case Keyboard::Right:
                 case Keyboard::D:
+                    if(snake -> isStop())return;
                     std::cout << "Right" << std::endl;
                     snake -> setDirection(RIGHT);
                     break;

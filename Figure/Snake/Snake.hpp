@@ -17,6 +17,8 @@ public:
     int getHeadY();
     void setSpeed(int speed);
     void deadlockCheck(RenderWindow& window);
+    bool isStop();
+    void dead();
     
 private:
     int headX;

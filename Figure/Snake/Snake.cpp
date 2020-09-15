@@ -17,6 +17,8 @@ Snake::Snake( RenderWindow& window, int size): Figure(size){
     speed = 5;
     
     direction = LEFT;
+    
+    figure[0] -> setColor(255, 0, 0);
 }
 
 void Snake::draw(RenderWindow& window){
@@ -80,6 +82,8 @@ void Snake::setDirection(Direction direction){
 }
 
 void Snake::shift(){
+    figure[0] -> setColor(255, 255, 255);
+    
     Point* temp = figure[figure.size() - 1];
     
     for(int i = figure.size() - 1; i > 0; i--){
@@ -87,6 +91,8 @@ void Snake::shift(){
     }
     
     figure[0] = temp;
+    
+    figure[0] -> setColor(255, 0, 0);
 }
 
 void Snake::setSpeed(int speed){
@@ -123,4 +129,14 @@ bool Snake::tailCheck(){
     }
     
     return check;
+}
+
+bool Snake::isStop(){
+    return direction == STOP;
+}
+
+void Snake::dead(){
+    for(int i = 1; i < figure.size(); i++){
+        figure[i] -> setColor(139,0,0);
+    }
 }
