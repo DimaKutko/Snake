@@ -72,52 +72,11 @@ void Snake::setDirection(Direction direction){
         case RIGHT:
             if(this -> direction == LEFT) return;
             break;
+        case STOP:
+            break;
     }
     
     this -> direction = direction;
-}
-
-void Snake::stepLeft(){
-    shift();
-    
-    headX -= 10;
-
-    figure[0] -> setY(headY);
-    
-    figure[0] -> setX(headX);
-}
-
-void Snake::stepRight(){
-    shift();
-    
-    headX += 10;
-    
-    figure[0] -> setY(headY);
-    
-    figure[0] -> setX(headX);
-}
-
-void Snake::stepTop(){
-    shift();
-    
-    headY -= 10;
-    
-    
-    figure[0] -> setY(headY);
-    
-    figure[0] -> setX(headX);
-}
-
-void Snake::stepDown(){
-    shift();
-    
-    headY += 10;
-    
-    
-    figure[0] -> setY(headY);
-    
-    figure[0] -> setX(headX);
-    
 }
 
 void Snake::shift(){
@@ -139,4 +98,29 @@ void Snake::deadlockCheck(RenderWindow& window){
     if(headX == window.getSize().x - 20 && direction == RIGHT) direction = STOP;
     if(headY == 20 && direction == UP) direction = STOP;
     if(headY == window.getSize().y - 20 && direction == DOWN) direction = STOP;
+    if(tailCheck())direction = STOP;
+}
+
+bool Snake::tailCheck(){
+    bool check = false;
+    
+    if(direction == LEFT){
+        for(Point* p : figure){
+            if(p -> getX() == headX - 20 && p -> getY() == headY) check = true;
+        }
+    }else if(direction == RIGHT){
+        for(Point* p : figure){
+            if(p -> getX() == headX + 20 && p -> getY() == headY) check = true;
+        }
+    }else if(direction == UP){
+        for(Point* p : figure){
+            if(p -> getY() == headY - 20 && p -> getX() == headX) check = true;
+        }
+    }else if(direction == DOWN){
+        for(Point* p : figure){
+            if(p -> getY() == headY + 20 && p -> getX() == headX) check = true;
+        }
+    }
+    
+    return check;
 }

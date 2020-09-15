@@ -10,7 +10,6 @@ public:
     Snake(RenderWindow& window, int size = 3);
     
     void draw(RenderWindow& window) override;
-    vector<Point*>* getSnake();
     void step(RenderWindow& window);
     void setDirection(Direction direction);
     Direction getDirection();
@@ -24,13 +23,10 @@ private:
     int headY;
     Direction direction;
     int timeCounter = 5;
-    int speed ;
+    int speed;
     
-    void stepLeft();
-    void stepRight();
-    void stepTop();
-    void stepDown();
     void shift();
+    bool tailCheck();
 };
 
 
