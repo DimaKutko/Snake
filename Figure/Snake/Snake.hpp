@@ -21,13 +21,14 @@ public:
     bool isStop();
     void dead();
     bool eat(int x, int y);
+    int size();
     
 private:
     int headX;
     int headY;
     Direction direction;
-    int timeCounter = 5;
-    int speed;
+    int timeCounter = 0;
+    int speed = 10;
     
     void shift();
     bool tailCheck();

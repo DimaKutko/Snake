@@ -14,8 +14,6 @@ Snake::Snake(RenderWindow& window, int size): Figure(size){
         x += 10;
     }
     
-    speed = 5;
-    
     direction = LEFT;
     
     figure[0] -> setColor(255, 0, 0);
@@ -163,4 +161,8 @@ bool Snake::eat(int x, int y){
         }
     }
     return false;
+}
+
+int Snake::size(){
+    return figure.size();
 }
