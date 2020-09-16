@@ -15,7 +15,7 @@ public:
     ~Play();
     
     void run();
-    void restartGame();
+    
     
 private:
     RenderWindow window;
@@ -23,6 +23,8 @@ private:
     Snake* snake;
     Apple* apple;
     
+    void restartGame();
     void action(RenderWindow& window, Event& event);
+    void speedController();
 };
 

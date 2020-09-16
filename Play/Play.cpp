@@ -31,7 +31,7 @@ void Play::run(){
         
         action(window, event);
         window.clear();
-        
+    
         snake -> deadlockCheck(window);
         
         if(snake -> isStop()){
@@ -45,6 +45,8 @@ void Play::run(){
         }
         
         for(Figure* f : graphics) f->draw(window);
+        
+        speedController();  
         
         window.display();
     }
@@ -108,4 +110,30 @@ void Play::restartGame(){
     graphics[1] = snake;
     
     graphics[2] = apple;
+}
+
+void Play::speedController(){
+    int points = snake->size() - 3;
+    
+    std::cout << "Points: " << points << std::endl;
+    
+    if(points == 5){
+        snake -> setSpeed(9);
+    }else if(points == 15) {
+        snake -> setSpeed(8);
+    }else if(points == 20) {
+        snake -> setSpeed(7);
+    }else if(points == 25) {
+        snake -> setSpeed(6);
+    }else if(points == 30) {
+        snake -> setSpeed(5);
+    }else if(points == 35) {
+        snake -> setSpeed(4);
+    }else if(points == 40) {
+        snake -> setSpeed(3);
+    }else if(points == 45) {
+        snake -> setSpeed(2);
+    }else if(points == 50){
+        snake -> setSpeed(1);
+    }
 }
