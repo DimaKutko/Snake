@@ -16,7 +16,6 @@ Play::Play(int height, int width) : window(VideoMode(height, width), "Snake") {
     graphics.push_back(snake);
     
     graphics.push_back(apple);
-    
 }
 
 Play::~Play(){
@@ -63,27 +62,27 @@ void Play::action(RenderWindow& window, Event& event){
                     break;
                 case Keyboard::Up:
                 case Keyboard::W:
-                    if(snake -> isStop())return;
                     std::cout << "UP" << std::endl;
                     snake -> setDirection(UP);
                     break;
                 case Keyboard::Down:
                 case Keyboard::S:
-                    if(snake -> isStop())return;
                     std::cout << "Down" << std::endl;
                     snake -> setDirection(DOWN);
                     break;
                 case Keyboard::Left:
                 case Keyboard::A:
-                    if(snake -> isStop())return;
                     std::cout << "Left" << std::endl;
                     snake -> setDirection(LEFT);
                     break;
                 case Keyboard::Right:
                 case Keyboard::D:
-                    if(snake -> isStop())return;
                     std::cout << "Right" << std::endl;
                     snake -> setDirection(RIGHT);
+                    break;
+                case Keyboard::Space:
+                    std::cout << "Space" << std::endl;
+                    restartGame();
                     break;
                 default:
                     std::cout << "NULL" << std::endl;
@@ -92,4 +91,21 @@ void Play::action(RenderWindow& window, Event& event){
         }
         
     }
+}
+
+void Play::restartGame(){
+    if(!snake -> isStop())return;
+    
+    for(int i = 1; i < graphics.size(); i++){
+        delete graphics[i];
+    }
+    
+    snake = new Snake(window);
+    
+    apple = new Apple(window);
+    
+    
+    graphics[1] = snake;
+    
+    graphics[2] = apple;
 }

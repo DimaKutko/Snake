@@ -15,6 +15,7 @@ public:
     ~Play();
     
     void run();
+    void restartGame();
     
 private:
     RenderWindow window;

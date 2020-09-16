@@ -61,6 +61,8 @@ void Snake::step(RenderWindow& window){
 }
 
 void Snake::setDirection(Direction direction){
+    if(isStop())return;
+    
     switch (direction) {
         case UP:
             if(this -> direction == DOWN) return;
