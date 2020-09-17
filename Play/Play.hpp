@@ -23,6 +23,7 @@ private:
     Snake* snake;
     Apple* apple;
     TextShow* text;
+    int points = 1;
     
     void restartGame();
     void action(RenderWindow& window, Event& event);

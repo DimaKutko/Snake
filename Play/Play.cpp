@@ -43,14 +43,13 @@ void Play::run(){
         }else{
             if(snake->eat(apple -> getX(), apple -> getY())){
                 apple -> generate(window);
+                speedController();
+                text -> setStringGame(snake -> getSpeed(), points);
             }
             snake -> step(window);
         }
         
         for(Figure* f : graphics) f->draw(window);
-        
-        
-        speedController();
         
         window.display();
     }
@@ -102,7 +101,7 @@ void Play::action(RenderWindow& window, Event& event){
 void Play::restartGame(){
     if(!snake -> isStop())return;
     
-    for(int i = 1; i < graphics.size(); i++){
+    for(int i = 2; i < graphics.size(); i++){
         delete graphics[i];
     }
     
@@ -111,15 +110,15 @@ void Play::restartGame(){
     apple = new Apple(window);
     
     
-    graphics[1] = snake;
+    graphics[2] = snake;
     
-    graphics[2] = apple;
+    graphics[3] = apple;
+    
+    points = 0;
 }
 
 void Play::speedController(){
-    int points = snake->size() - 3;
-    
-    
+    points = snake->size() - 3;
     
     if(points == 5){
         snake -> setSpeed(9);

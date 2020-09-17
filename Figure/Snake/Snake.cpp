@@ -166,3 +166,7 @@ bool Snake::eat(int x, int y){
 int Snake::size(){
     return figure.size();
 }
+
+int Snake::getSpeed(){
+    return 11 - speed;
+}

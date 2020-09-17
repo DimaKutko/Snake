@@ -6,6 +6,8 @@ TextShow::TextShow(int speed, int points) : Figure(0){
         std::cout << "Error font" << std::endl;
     }
     
+    str = "S: " + std::to_string(1) + " | P: " + std::to_string(0);
+    
     this -> points = points;
     
     this -> speed = speed;
@@ -20,7 +22,7 @@ TextShow::TextShow(int speed, int points) : Figure(0){
 }
 
 void TextShow::draw(sf::RenderWindow& window){
-    text.setString("S: " + std::to_string(speed) + "P: " + std::to_string(points));
+    text.setString(str);
     
     window.draw(text);
 }
@@ -34,10 +36,9 @@ void TextShow::setPoints(int points){
 }
 
 void TextShow::setStringGame(int speed, int points){
-    
+    str = "S: " + std::to_string(speed) + " | P: " + std::to_string(points);
 }
 
 void TextShow::setString(std::string str){
-    
+    this -> str = str;
 }
-

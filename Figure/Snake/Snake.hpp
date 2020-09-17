@@ -22,6 +22,7 @@ public:
     void dead();
     bool eat(int x, int y);
     int size();
+    int getSpeed();
     
 private:
     int headX;
