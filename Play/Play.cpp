@@ -1,6 +1,6 @@
 #include "Play.hpp"
 
-Play::Play(int height, int width) : window(VideoMode(height, width), "Snake") {
+Play::Play(int height, int width) : window(VideoMode(width, height), "Snake") {
     const int counterFigure = 4;
     
     window.setVerticalSyncEnabled(true);

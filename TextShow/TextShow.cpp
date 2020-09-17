@@ -12,11 +12,13 @@ TextShow::TextShow(int speed, int points) : Figure(0){
     
     this -> speed = speed;
     
+//    text.setPosition(20, 12);
+    
     text.setFillColor(sf::Color::White);
     
     text.setStyle(sf::Text::Bold);
     
-    text.setCharacterSize(50);
+    text.setCharacterSize(35);
     
     text.setFont(font);
 }
