@@ -6,6 +6,7 @@
 #include <iostream>
 #include <vector>
 #include "Apple.hpp"
+#include "TextShow.hpp"
 
 using namespace sf;
 
@@ -16,12 +17,12 @@ public:
     
     void run();
     
-    
 private:
     RenderWindow window;
     vector<Figure*> graphics;
     Snake* snake;
     Apple* apple;
+    TextShow* text;
     
     void restartGame();
     void action(RenderWindow& window, Event& event);

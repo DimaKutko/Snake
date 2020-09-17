@@ -1,7 +1,7 @@
 #include "Play.hpp"
 
 Play::Play(int height, int width) : window(VideoMode(height, width), "Snake") {
-    const int counterFigure = 3;
+    const int counterFigure = 4;
     
     window.setVerticalSyncEnabled(true);
     
@@ -9,9 +9,13 @@ Play::Play(int height, int width) : window(VideoMode(height, width), "Snake") {
     
     apple = new Apple(window);
     
+    text = new TextShow(0);
+    
     graphics.reserve(counterFigure);
     
     graphics.push_back(new Walls(window));
+    
+    graphics.push_back(text);
     
     graphics.push_back(snake);
     
@@ -40,13 +44,13 @@ void Play::run(){
             if(snake->eat(apple -> getX(), apple -> getY())){
                 apple -> generate(window);
             }
-                
             snake -> step(window);
         }
         
         for(Figure* f : graphics) f->draw(window);
         
-        speedController();  
+        
+        speedController();
         
         window.display();
     }
@@ -115,7 +119,7 @@ void Play::restartGame(){
 void Play::speedController(){
     int points = snake->size() - 3;
     
-    std::cout << "Points: " << points << std::endl;
+    
     
     if(points == 5){
         snake -> setSpeed(9);
