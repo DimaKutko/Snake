@@ -12,7 +12,7 @@ using namespace sf;
 
 class Play{
 public:
-    Play(int height = 600, int width = 600);
+    Play(int height = 640, int width = 600);
     ~Play();
     
     void run();

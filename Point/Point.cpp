@@ -22,6 +22,10 @@ void Point::setSize(int size){
     point.setSize(Vector2f(size,size));
 }
 
+void Point::setSize(int h, int w){
+    point.setSize(Vector2f(h,w));
+}
+
 int Point::getSize(){
     return size;
 }

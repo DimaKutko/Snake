@@ -6,13 +6,13 @@ TextShow::TextShow(int speed, int points) : Figure(0){
         std::cout << "Error font" << std::endl;
     }
     
-    str = "S: " + std::to_string(1) + " | P: " + std::to_string(0);
+    str = "Speed: " + std::to_string(1) + " | Points: " + std::to_string(0);
     
     this -> points = points;
     
     this -> speed = speed;
     
-//    text.setPosition(20, 12);
+    text.setPosition(0, -5);
     
     text.setFillColor(sf::Color::White);
     
@@ -38,7 +38,7 @@ void TextShow::setPoints(int points){
 }
 
 void TextShow::setStringGame(int speed, int points){
-    str = "S: " + std::to_string(speed) + " | P: " + std::to_string(points);
+    str = "Speed: " + std::to_string(speed) + " | Points: " + std::to_string(points);
 }
 
 void TextShow::setString(std::string str){

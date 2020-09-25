@@ -10,6 +10,7 @@ public:
     void draw(RenderWindow& window);
     void setColor(int r = 0, int g = 0, int b = 0);
     void setSize(int size = 20);
+    void setSize(int h, int w);
     int getSize();
     
     void setX(int x);

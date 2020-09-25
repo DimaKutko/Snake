@@ -102,7 +102,7 @@ void Snake::setSpeed(int speed){
 void Snake::deadlockCheck(RenderWindow& window){
     if(headX == 20 && direction == LEFT) direction = STOP;
     if(headX == window.getSize().x - 20 && direction == RIGHT) direction = STOP;
-    if(headY == 20 && direction == UP) direction = STOP;
+    if(headY == 60 && direction == UP) direction = STOP;
     if(headY == window.getSize().y - 20 && direction == DOWN) direction = STOP;
     if(tailCheck())direction = STOP;
 }
