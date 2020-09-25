@@ -3,13 +3,15 @@
 Play::Play(int height, int width) : window(VideoMode(width, height), "Snake") {
     const int counterFigure = 4;
     
+    points = 0;
+    
     window.setVerticalSyncEnabled(true);
     
     snake = new Snake(window);
     
     apple = new Apple(window);
     
-    text = new TextShow(0);
+    text = new TextShow(best.getBest(), 0, 0);
     
     graphics.reserve(counterFigure);
     
@@ -45,7 +47,9 @@ void Play::run(){
             if(snake->eat(apple -> getX(), apple -> getY())){
                 apple -> generate(window);
                 speedController();
-                text -> setStringGame(snake -> getSpeed(), points);
+                best.setBest(points);
+                text -> setStringGame(snake -> getSpeed(), points, best.getBest());
+                
             }
             snake -> step(window);
         }
@@ -117,7 +121,7 @@ void Play::restartGame(){
     
     points = 0;
     
-    text -> setStringGame(snake -> getSpeed(), points);
+    text -> setStringGame(snake -> getSpeed(), points, best.getBest());
 }
 
 void Play::speedController(){

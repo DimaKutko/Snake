@@ -7,6 +7,7 @@
 #include <vector>
 #include "Apple.hpp"
 #include "TextShow.hpp"
+#include "Best.hpp"
 
 using namespace sf;
 
@@ -23,7 +24,9 @@ private:
     Snake* snake;
     Apple* apple;
     TextShow* text;
-    int points = 1;
+    Best best;
+    
+    int points;
     
     void restartGame();
     void action(RenderWindow& window, Event& event);
