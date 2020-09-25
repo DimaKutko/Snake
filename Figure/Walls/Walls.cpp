@@ -1,45 +1,32 @@
 #include "Walls.hpp"
 
 
-Walls::Walls(RenderWindow& window) : Figure(window.getSize().x-2){
-    const int height = window.getSize().x;
-    const int width = window.getSize().y;
+Walls::Walls(RenderWindow& window) : Figure(4){
     
-    left.reserve(height);
-    right.reserve(height);
-    down.reserve(width-2);
-    
-    for(int i = 0, x = 0; i < width; i++){
-        down.push_back(new Point(x, height));
-        figure.push_back(new Point(x, 0));
-        
-        down[i]->setColor(wallsColor[0], wallsColor[1], wallsColor[2]);
-        figure[i]->setColor(wallsColor[0], wallsColor[1], wallsColor[2]);
-        x += down[i]->getSize();
+    for(int i = 0; i < 4; i++){
+        figure.push_back(new Point(1,2));
+        figure[i] -> setColor(wallsColor[0], wallsColor[1], wallsColor[2]);
     }
     
-    for(int i = 0, y = 0; i < height; i++){
-        left.push_back(new Point(0, y));
-        right.push_back(new Point(width, y));
-        
-        left[i]->setColor(wallsColor[0], wallsColor[1], wallsColor[2]);
-        right[i]->setColor(wallsColor[0], wallsColor[1], wallsColor[2]);
-        y += left[i]->getSize();
-    }
-}
-
-Walls::~Walls(){
-    std::cout << "~Walls\n";
+    figure[0] -> setSize(10, window.getSize().x);
+    figure[0] -> setX(10);
+    figure[0] -> setY(50);
     
-    for(Point* p : left) delete p;
-    for(Point* p : right) delete p;
-    for(Point* p : down) delete p;
+    figure[1] -> setSize(10, window.getSize().x);
+    figure[1] -> setX(window.getSize().x);
+    figure[1] -> setY(50);
     
+    figure[2] -> setSize(window.getSize().y, 10);
+    figure[2] -> setX(10);
+    figure[2] -> setY(50);
+    
+    figure[3] -> setSize(window.getSize().y, 10);
+    figure[3] -> setX(10);
+    figure[3] -> setY(window.getSize().y);
 }
 
 void Walls::draw(RenderWindow& window){
-    for(Point* p : figure) p->draw(window);
-    for(Point* p : left) p->draw(window);
-    for(Point* p : right) p->draw(window);
-    for(Point* p : down) p->draw(window);
+    for(Point* p : figure){
+        p -> draw(window);
+    }
 }

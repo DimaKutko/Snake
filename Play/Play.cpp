@@ -1,7 +1,7 @@
 #include "Play.hpp"
 
-Play::Play(int height, int width) : window(VideoMode(height, width), "Snake") {
-    const int counterFigure = 3;
+Play::Play(int height, int width) : window(VideoMode(width, height), "Snake") {
+    const int counterFigure = 4;
     
     window.setVerticalSyncEnabled(true);
     
@@ -9,9 +9,13 @@ Play::Play(int height, int width) : window(VideoMode(height, width), "Snake") {
     
     apple = new Apple(window);
     
+    text = new TextShow(0);
+    
     graphics.reserve(counterFigure);
     
     graphics.push_back(new Walls(window));
+    
+    graphics.push_back(text);
     
     graphics.push_back(snake);
     
@@ -36,17 +40,17 @@ void Play::run(){
         
         if(snake -> isStop()){
             snake -> dead();
+            text -> setString("Press SPACE for restart");
         }else{
             if(snake->eat(apple -> getX(), apple -> getY())){
                 apple -> generate(window);
+                speedController();
+                text -> setStringGame(snake -> getSpeed(), points);
             }
-                
             snake -> step(window);
         }
         
         for(Figure* f : graphics) f->draw(window);
-        
-        speedController();  
         
         window.display();
     }
@@ -98,7 +102,7 @@ void Play::action(RenderWindow& window, Event& event){
 void Play::restartGame(){
     if(!snake -> isStop())return;
     
-    for(int i = 1; i < graphics.size(); i++){
+    for(int i = 2; i < graphics.size(); i++){
         delete graphics[i];
     }
     
@@ -107,15 +111,17 @@ void Play::restartGame(){
     apple = new Apple(window);
     
     
-    graphics[1] = snake;
+    graphics[2] = snake;
     
-    graphics[2] = apple;
+    graphics[3] = apple;
+    
+    points = 0;
+    
+    text -> setStringGame(snake -> getSpeed(), points);
 }
 
 void Play::speedController(){
-    int points = snake->size() - 3;
-    
-    std::cout << "Points: " << points << std::endl;
+    points = snake->size() - 3;
     
     if(points == 5){
         snake -> setSpeed(9);
