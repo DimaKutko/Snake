@@ -1,16 +1,18 @@
 #include "TextShow.hpp"
 
-TextShow::TextShow(int speed, int points) : Figure(0){
+TextShow::TextShow(int speed, int points, int record) : Figure(0){
     if (!font.loadFromFile("FontForSnake.ttf"))
     {
         std::cout << "Error font" << std::endl;
     }
     
-    str = "Speed: " + std::to_string(1) + " | Points: " + std::to_string(0);
+    str = "Speed:" + std::to_string(speed) + "|Points:" + std::to_string(points) + "|Best:" + std::to_string(record);
     
     this -> points = points;
     
     this -> speed = speed;
+    
+    this -> record = record;
     
     text.setPosition(0, -5);
     
@@ -37,8 +39,8 @@ void TextShow::setPoints(int points){
       this -> points = points;
 }
 
-void TextShow::setStringGame(int speed, int points){
-    str = "Speed: " + std::to_string(speed) + " | Points: " + std::to_string(points);
+void TextShow::setStringGame(int speed, int points, int record){
+    str = "Speed:" + std::to_string(speed) + "|Points:" + std::to_string(points) + "|Best:" + std::to_string(record);
 }
 
 void TextShow::setString(std::string str){

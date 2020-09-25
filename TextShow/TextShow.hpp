@@ -6,11 +6,11 @@
 
 class TextShow : public Figure{
 public:
-    TextShow(int speed = 1, int points = 0);
+    TextShow(int record, int speed, int points);
     
     void setPoints(int points);
     void setSpeed(int speed);
-    void setStringGame(int speed, int points);
+    void setStringGame(int speed, int points, int record);
     void setString(std::string str);
     void draw(sf::RenderWindow& window) override;
     
@@ -20,4 +20,5 @@ private:
     std::string str;
     int speed;
     int points;
+    int record;
 };
