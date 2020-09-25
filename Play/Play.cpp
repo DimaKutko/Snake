@@ -40,6 +40,7 @@ void Play::run(){
         
         if(snake -> isStop()){
             snake -> dead();
+            text -> setString("Press SPACE for restart");
         }else{
             if(snake->eat(apple -> getX(), apple -> getY())){
                 apple -> generate(window);
@@ -115,6 +116,8 @@ void Play::restartGame(){
     graphics[3] = apple;
     
     points = 0;
+    
+    text -> setStringGame(snake -> getSpeed(), points);
 }
 
 void Play::speedController(){
