@@ -1,10 +1,18 @@
 #include "Apple.hpp"
 
+
+int generateX(RenderWindow& window){
+    int h20 = (window.getSize().x / 20) - 1;
+    return (rand() % h20 + 1 ) * 20;
+}
+
+int generateY(RenderWindow& window){
+    int y20 = (window.getSize().x / 20) - 1;
+    return (rand() % y20 + 3 ) * 20;
+}
+
 Apple::Apple(RenderWindow& window) : Figure(1){
-    int x = (rand() % (window.getSize().x / 20)) * 20;
-    int y = (rand() % (window.getSize().y / 20)) * 20;
-    
-    figure.push_back(new Point(x,y));
+    figure.push_back(new Point(generateX(window),generateY(window)));
     
     figure[0] -> setColor(0,255,0);
 }
@@ -22,8 +30,6 @@ void Apple::draw(RenderWindow& window){
 }
 
 void Apple::generate(RenderWindow& window){
-    int x = (rand() % (window.getSize().x / 20)) * 20;
-    int y = (rand() % (window.getSize().y / 20)) * 20;
-    
-    figure[0] -> setXY(x, y);
+    figure[0] -> setXY(generateX(window), generateY(window));
 }
+
